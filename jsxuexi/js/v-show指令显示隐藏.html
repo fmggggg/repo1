@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-show指令</title>
+</head>
+
+<body>
+    <h2>必须大于18岁才能浏览</h2>
+    <div id="app">
+
+        <button @click="subAge">-</button>
+        <span>你的年龄是：{{age}}</span>
+        <button @click="addAge">+</button>
+        <button @click="doIt">点击切换显示</button>
+        <p><img v-show="isShow" src="..\\img\\1.jpg" alt="" ></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: false,
+                age: 0
+
+            },
+            methods: {
+                doIt: function () {
+                    if (this.age > 17) {
+                        if (this.isShow == true) {
+                            this.isShow = false;
+                        }
+                        else if (this.isShow == false) {
+                            this.isShow = true;
+                        }
+                    }
+                },
+                addAge: function () {
+                    this.age++;
+                },
+                subAge: function () {
+                    if (this.age == 0) {
+                        alert("不能小于零")
+                    } else {
+                        this.age--;
+                    }
+                    if(this.age<18){
+                        this.isShow = false;
+                    }
+
+                }
+            }
+        })
+    </script>
+</body>
+
+
+</html>
